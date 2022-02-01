@@ -1,3 +1,4 @@
 requests==2.27.1
 rockset==0.8.1
 tweepy==4.5.0
+protobuf==3.19.1
