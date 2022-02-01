@@ -1,0 +1,33 @@
+name: Update Ranking Data and Post Tweet
+
+on:
+  workflow_dispatch:
+  schedule: 
+    - cron: 0 * * * *
+
+jobs:
+  main:
+      runs-on: ubuntu-latest
+      strategy:
+        matrix:
+          python-version: [3.9]
+
+      steps:
+      - uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: pip3 install -r requirements.txt
+      
+      - name: Post Tweet
+        run: python3 main.py
+        env:
+          ROCKSET_TOKEN: ${{ secrets.ROCKSET_TOKEN }}
+          TWITTER_CONSUMER_KEY: ${{ secrets.TWITTER_CONSUMER_KEY }}
+          TWITTER_CONSUMER_SECRET: ${{ secrets.TWITTER_CONSUMER_SECRET }}
+          TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+          TWITTER_ACCESS_SECRET: ${{ secrets.TWITTER_ACCESS_SECRET }}
+
+      - name: Update database
+        run: python3 update_database.py
+        env:
+          ROCKSET_TOKEN: ${{ secrets.ROCKSET_TOKEN }}
