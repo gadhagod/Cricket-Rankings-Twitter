@@ -9,4 +9,5 @@ api.verify_credentials()
 print("Twitter Authentication Successful")
 
 def post_tweet(tweet_body):
+    print(tweet_body)
     api.update_status(tweet_body)
