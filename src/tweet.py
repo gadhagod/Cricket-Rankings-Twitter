@@ -6,7 +6,6 @@ auth.set_access_token(creds["twitter"]["access_token"], creds["twitter"]["access
 api = tweepy.API(auth)
 
 api.verify_credentials()
-print("Twitter Authentication Successful")
 
 def post_tweet(tweet_body):
     print(tweet_body)
