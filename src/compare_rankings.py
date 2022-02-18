@@ -37,7 +37,7 @@ def compare():
                         change = "⬆"
 
                     player_name = new_player["name"][0] + new_player["name"][new_player["name"].find(" "):]
-                    position_result += "\n" + change + player_name + " #" + str(new_player["rank"]) + " in " + new_format
+                    position_result += "\n" + change + player_name + " #" + str(new_player["rank"]) + " - " + new_format
             
         if(position_change):
             result += position_result
